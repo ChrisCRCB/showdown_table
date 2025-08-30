@@ -1,0 +1,11 @@
+length = 3660;
+width = 1220;
+wall_height = 140;
+corner_radii = 230;
+goal_radius = 150;
+end_hole_width = 300;
+end_hole_height = 100;
+tactile_line_radius = 200;
+contact_board = 50;
+screen_height = 420 + wall_height;
+screen_opening = 100;
