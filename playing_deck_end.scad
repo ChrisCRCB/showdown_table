@@ -7,19 +7,19 @@ include <table.scad>;
 // The model is 2d, so it can be rendered to a DXF file and cut out of wood with a CNC router.
 module playing_deck_end() {
   // The main rectangle, with goal pocket and corner squares removed.
-  union() {
-    difference() {
-      square([width, length / 2]);
-      translate([width / 2, 0])
-        circle(r=goal_radius);
-      square(corner_radii - 2);
-      translate([width - corner_radii + 2, 0])
-        square(corner_radii - 2);
+  difference() {
+    union() {
+      translate([corner_radii, corner_radii]) {
+        offset(delta=corner_radii) {
+          square([width - (corner_radii * 2), (length / 2) - (corner_radii * 2)]);
+        }
+      }
+      translate([0, (length / 2) - (corner_radii * 2)]) {
+        square([width, corner_radii * 2]);
+      }
     }
-    translate([corner_radii, corner_radii])
-      circle(r=corner_radii);
-    translate([width - corner_radii, corner_radii])
-      circle(r=corner_radii);
+    translate([width / 2, 0])
+      circle(goal_radius);
   }
 }
 
