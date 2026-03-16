@@ -21,4 +21,6 @@ screen_height = 420 + wall_height;
 // The distance between the playing surface and the bottom of the centre board in mm. This is the height of the space the ball must travel through to clear the screen.
 screen_opening = 100;
 // The thickness of the table walls in mm.
-wall_thickness = 20;
+wall_thickness = 12;
+// The thickness of the ply used for the deck in mm.
+deck_thickness = 12;
