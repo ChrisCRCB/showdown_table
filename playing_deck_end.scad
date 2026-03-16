@@ -1,4 +1,7 @@
-include <table.scad>;
+include <table.scad>
+;
+include <goal_line.scad>
+;
 
 /// A single end of the playing deck.
 //
@@ -10,7 +13,7 @@ module playing_deck_end() {
   difference() {
     union() {
       translate([corner_radii, corner_radii]) {
-        offset(delta=corner_radii) {
+        offset(delta = corner_radii) {
           square([width - (corner_radii * 2), (length / 2) - (corner_radii * 2)]);
         }
       }
@@ -20,6 +23,8 @@ module playing_deck_end() {
     }
     translate([width / 2, 0])
       circle(goal_radius);
+    translate([width / 2, 0])
+      goal_line();
   }
 }
 
