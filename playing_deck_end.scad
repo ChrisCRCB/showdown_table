@@ -9,29 +9,33 @@ include <goal_line.scad>
 //
 // The model is 2d, so it can be rendered to a DXF file and cut out of wood with a CNC router.
 //
-// The deck sits beneath everything else, so it must be expanded by `wall_thickness`.
+// The deck sits inside the walls.
 module playing_deck_end() {
-  actual_corner_radii = corner_radii + wall_thickness;
   // The main rectangle, with goal pocket and corner squares removed.
   difference() {
     union() {
-      translate([actual_corner_radii, actual_corner_radii]) {
-        offset(delta = actual_corner_radii) {
-          square([width - (corner_radii * 2), length / 2]);
+      translate([corner_radii, corner_radii]) {
+        offset(delta = corner_radii) {
+          square([width - (corner_radii * 2), 1]);
         }
       }
-      translate([0, actual_corner_radii]) {
-        square([wall_thickness + width + wall_thickness, length / 2]);
+      translate([0, corner_radii]) {
+        square([width, (length / 2) - corner_radii]);
       }
     }
-    translate([0, wall_thickness + (length / 2)])
-      square([wall_thickness + width + wall_thickness, length]);
-    translate([(width / 2) + wall_thickness, wall_thickness])
+    translate([width / 2, 0])
       circle(goal_radius);
-    translate([(width / 2) + wall_thickness, wall_thickness])
+    translate([width / 2, 0])
       goal_line();
-    translate([(width / 2) - (end_hole_width / 2), 0])
-      square([wall_thickness + end_hole_width + wall_thickness, wall_thickness]);
+    // Where the screw holes start.
+    holes_start = tactile_line_radius + strut_width;
+    screw_inset = screw_thickness * 2;
+    for(y = [holes_start:500:length / 2]) {
+      translate([screw_inset, y])
+        circle(screw_thickness);
+      translate([width - screw_inset, y])
+        circle(screw_thickness);
+    }
   }
 }
 

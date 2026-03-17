@@ -24,3 +24,7 @@ screen_opening = 100;
 wall_thickness = 12;
 // The thickness of the ply used for the deck in mm.
 deck_thickness = 12;
+// The thickness of the screw threads in mm.
+screw_thickness = 5;
+// The width of the support struts in mm.
+strut_width = 50;
