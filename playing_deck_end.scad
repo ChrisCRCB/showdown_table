@@ -29,7 +29,6 @@ module playing_deck_end() {
       goal_line();
     // Where the screw holes start.
     holes_start = tactile_line_radius + strut_width;
-    screw_inset = screw_thickness * 2;
     for(y = [holes_start:500:length / 2]) {
       translate([screw_inset, y])
         circle(screw_thickness);

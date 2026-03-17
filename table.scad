@@ -25,6 +25,8 @@ wall_thickness = 12;
 // The thickness of the ply used for the deck in mm.
 deck_thickness = 12;
 // The thickness of the screw threads in mm.
-screw_thickness = 5;
+screw_thickness = 2.5;
+// The distance from the walls where screw holes will be placed in the playing deck.
+screw_inset = screw_thickness * 4;
 // The width of the support struts in mm.
 strut_width = 50;
