@@ -2,6 +2,8 @@ include <table.scad>
 ;
 include <goal_line.scad>
 ;
+include <peg_hole.scad>
+;
 
 /// A single end of the playing deck.
 //
@@ -29,9 +31,9 @@ module playing_deck_end() {
       goal_line();
     for(y = [holes_start:500:length / 2]) {
       translate([screw_inset, y])
-        circle(screw_thickness);
+        peg_hole();
       translate([width - screw_inset, y])
-        circle(screw_thickness);
+        peg_hole();
     }
   }
 }
