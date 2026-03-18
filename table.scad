@@ -34,5 +34,7 @@ strut_width = 50;
 holes_start = tactile_line_radius + strut_width;
 // The size of the hole which the joining pegs will go through.
 peg_hole_size = [wall_thickness, wall_thickness];
+// The difference between the pegs and their holes.
+peg_difference = 0.5;
 // The size of the pegs which will go through the peg holes.
-peg_size = 11.5;
+peg_size = [peg_hole_size[0] - peg_difference, deck_thickness - peg_difference];
