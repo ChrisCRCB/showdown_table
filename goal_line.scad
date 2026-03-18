@@ -20,7 +20,7 @@ module goal_line() {
   r = 3;
   distance = tactile_line_radius - r;
 
-  // Target a 3 mm edge-to-edge gap between neighboring holes.
+  // Target a 3 mm edge-to-edge gap between neighbouring holes.
   target_edge_gap = 3;
   target_center_spacing = 2 * r + target_edge_gap;
 
