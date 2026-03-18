@@ -32,3 +32,7 @@ screw_inset = screw_thickness * 4;
 strut_width = 50;
 // Where the notches start in the playing deck and where the pegs start in the horizontal struts.
 holes_start = tactile_line_radius + strut_width;
+// The size of the hole which the joining pegs will go through.
+peg_hole_size = [wall_thickness, wall_thickness];
+// The size of the pegs which will go through the peg holes.
+peg_size = 11.5;
