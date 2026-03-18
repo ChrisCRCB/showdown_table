@@ -30,3 +30,5 @@ screw_thickness = 2.5;
 screw_inset = screw_thickness * 4;
 // The width of the support struts in mm.
 strut_width = 50;
+// Where the notches start in the playing deck and where the pegs start in the horizontal struts.
+holes_start = tactile_line_radius + strut_width;
