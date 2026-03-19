@@ -1,5 +1,6 @@
 include <table.scad>
 ;
+
 /// Converts polar coordinates (distance + angle in degrees) to an (X,Y) point.
 /// OpenSCAD trig functions expect degrees, so no unit conversion is required.
 function polar_point(distance, angle) =
