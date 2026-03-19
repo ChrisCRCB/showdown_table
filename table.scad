@@ -23,18 +23,26 @@ screen_opening = 100;
 // The thickness of the table walls in mm.
 wall_thickness = 12;
 // The thickness of the ply used for the deck in mm.
-deck_thickness = 12;
-// The thickness of the screw threads in mm.
-screw_thickness = 2.5;
+deck_thickness = 8;
+// The radius of the screw threads in mm.
+screw_radius = 2.5;
 // The distance from the walls where screw holes will be placed in the playing deck.
-screw_inset = screw_thickness * 4;
+screw_inset = screw_radius * 4;
 // The width of the support struts in mm.
 strut_width = 50;
+// The thickness of the ply used to make the struts.
+strut_thickness = 12;
 // Where the notches start in the playing deck and where the pegs start in the horizontal struts.
 holes_start = tactile_line_radius + strut_width;
 // The size of the hole which the joining pegs will go through.
 peg_hole_size = [wall_thickness, wall_thickness];
 // The difference between the pegs and their holes.
 peg_difference = 0.5;
-// The size of the pegs which will go through the peg holes.
+// The size of the pegs which will go through `peg_hole()`.
 peg_size = [peg_hole_size[0] - peg_difference, deck_thickness - peg_difference];
+// The width of the widest stacked planks which make up the tongue-and-groove which links the table ends.
+widest_joining_board = 50;
+// The width of the narrowest stacked planks which make up the tongue-and-groove which links the table ends.
+narrowest_joining_board = widest_joining_board - (widest_joining_board / 5);
+// The thickness of the ply which makes up the joining boards.
+joining_board_thickness = 8;

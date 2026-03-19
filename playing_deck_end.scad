@@ -1,5 +1,11 @@
 include <table.scad>
 ;
+include <goal_pocket.scad>
+;
+include <horizontal_strut_positions.scad>
+;
+include <vertical_strut_positions.scad>
+;
 include <goal_line.scad>
 ;
 include <peg_hole.scad>
@@ -26,13 +32,19 @@ module playing_deck_end() {
       }
     }
     translate([width / 2, 0])
-      circle(goal_radius);
+      goal_pocket();
     translate([width / 2, 0])
       goal_line();
-    for(y = [holes_start:500:length / 2]) {
-      translate([screw_inset, y])
+    // The holes that the horizontal strut pegs will marry up with.
+    horizontal_strut_positions() {
+      translate([screw_inset, 0])
         peg_hole();
-      translate([width - screw_inset, y])
+      translate([width - screw_inset, 0])
+        peg_hole();
+    }
+    // Make the holes that the pegs at the ends of the vertical struts will go through.
+    vertical_strut_positions(wall_thickness) {
+      translate([0, screw_inset])
         peg_hole();
     }
   }
