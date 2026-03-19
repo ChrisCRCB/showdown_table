@@ -5,5 +5,5 @@ include <table.scad>
 //
 // This module must be added with `difference`.
 module screw_hole() {
-  circle(screw_hole_radius);
+  circle(screw_radius);
 }

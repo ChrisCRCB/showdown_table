@@ -40,9 +40,13 @@ peg_hole_size = [wall_thickness, wall_thickness];
 peg_difference = 0.5;
 // The size of the pegs which will go through `peg_hole()`.
 peg_size = [peg_hole_size[0] - peg_difference, deck_thickness - peg_difference];
-// The width of the widest stacked planks which make up the tongue-and-groove which links the table ends.
-widest_joining_board = 50;
-// The width of the narrowest stacked planks which make up the tongue-and-groove which links the table ends.
-narrowest_joining_board = widest_joining_board - (widest_joining_board / 5);
+// The width of the joining boards.
+joining_board_width = 50;
+// The difference between the tongue and groove in the table.
+tongue_multiplier = joining_board_width / 5;
+// The width of the joining tongue.
+tongue_width = joining_board_width + tongue_multiplier;
+// The width of the groove.
+groove_width = joining_board_width - tongue_multiplier;
 // The thickness of the ply which makes up the joining boards.
-joining_board_thickness = 8;
+joining_board_thickness = 6;

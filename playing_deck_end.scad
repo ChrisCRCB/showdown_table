@@ -10,6 +10,8 @@ include <goal_line.scad>
 ;
 include <peg_hole.scad>
 ;
+include <joining_board_screw_holes.scad>
+;
 
 /// A single end of the playing deck.
 //
@@ -46,6 +48,9 @@ module playing_deck_end() {
     vertical_strut_positions(wall_thickness) {
       translate([0, screw_inset])
         peg_hole();
+    }
+    translate([0, length - joining_board_width]) {
+      joining_board_screw_holes();
     }
   }
 }
