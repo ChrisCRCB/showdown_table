@@ -1,6 +1,16 @@
 include <table.scad>
 ;
+include <goal_pocket.scad>
+;
+include <horizontal_strut_positions.scad>
+;
+include <vertical_strut_positions.scad>
+;
 include <goal_line.scad>
+;
+include <peg_hole.scad>
+;
+include <joining_board_screw_holes.scad>
 ;
 
 /// A single end of the playing deck.
@@ -9,29 +19,39 @@ include <goal_line.scad>
 //
 // The model is 2d, so it can be rendered to a DXF file and cut out of wood with a CNC router.
 //
-// The deck sits beneath everything else, so it must be expanded by `wall_thickness`.
+// The deck sits inside the walls.
 module playing_deck_end() {
-  actual_corner_radii = corner_radii + wall_thickness;
   // The main rectangle, with goal pocket and corner squares removed.
   difference() {
     union() {
-      translate([actual_corner_radii, actual_corner_radii]) {
-        offset(delta = actual_corner_radii) {
-          square([width - (corner_radii * 2), length / 2]);
+      translate([corner_radii, corner_radii]) {
+        offset(delta = corner_radii) {
+          square([width - (corner_radii * 2), 1]);
         }
       }
-      translate([0, actual_corner_radii]) {
-        square([wall_thickness + width + wall_thickness, length / 2]);
+      translate([0, corner_radii]) {
+        square([width, (length / 2) - corner_radii]);
       }
     }
-    translate([0, wall_thickness + (length / 2)])
-      square([wall_thickness + width + wall_thickness, length]);
-    translate([(width / 2) + wall_thickness, wall_thickness])
-      circle(goal_radius);
-    translate([(width / 2) + wall_thickness, wall_thickness])
+    translate([width / 2, 0])
+      goal_pocket();
+    translate([width / 2, 0])
       goal_line();
-    translate([(width / 2) - (end_hole_width / 2), 0])
-      square([wall_thickness + end_hole_width + wall_thickness, wall_thickness]);
+    // The holes that the horizontal strut pegs will marry up with.
+    horizontal_strut_positions() {
+      translate([screw_inset, 0])
+        peg_hole();
+      translate([width - screw_inset, 0])
+        peg_hole();
+    }
+    // Make the holes that the pegs at the ends of the vertical struts will go through.
+    vertical_strut_positions(wall_thickness) {
+      translate([0, screw_inset])
+        peg_hole();
+    }
+    translate([0, length - joining_board_width]) {
+      joining_board_screw_holes();
+    }
   }
 }
 
