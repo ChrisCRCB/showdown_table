@@ -2,7 +2,7 @@
 length = 3660;
 /// The width of the playing deck in mm.
 width = 1220;
-/// The distance between the playing surface and the top of the walls in mm. %This value represents the height of the walls from the player's perspective.
+/// The distance between the playing surface and the top of the walls in mm. This value represents the height of the walls from the player's perspective.
 wall_height = 140;
 /// The radii of the curved corners of the table in mm.
 corner_radii = 230;
